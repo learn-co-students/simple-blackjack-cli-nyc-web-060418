@@ -35,17 +35,17 @@ def initial_round
    hand
 end
 
-def hit?
+def hit?(current_total)
   # code hit? here
   prompt_user
   userInput = get_user_input
   if userInput == "h"
-    deal_card
+    current_total += deal_card
   elsif userInput == "s"
-    0
+    current_total += 0
   else
     invalid_command
-    0
+    current_total += 0
   end
 
 end
@@ -65,7 +65,7 @@ def runner
   welcome
   hand = initial_round
   while hand <=21
-    hand += hit?
+    hand = hit?(hand)
     display_card_total(hand)
   end
   end_game(hand)
