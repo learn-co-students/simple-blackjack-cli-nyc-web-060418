@@ -40,10 +40,21 @@ def hit?(total)
   # code hit? here
   prompt_user
   input = get_user_input
+  until input == 'h' || input == 's'
+    invalid_command
+    prompt_user
+    input = get_user_input
+  end
+  if input == 'h'
+    total += deal_card
+  elsif input == 's'
+      total
+  end
 end
 
 def invalid_command
   # code invalid_command here
+  puts "Invalid command"
 end
 
 #####################################################
@@ -52,5 +63,12 @@ end
 
 def runner
   # code runner here
+  card_total = initial_round
+  until card_total > 21
+  welcome
+  hit?(card_total)
+  card_total = hit?(card_total)
+    
+  end
 end
     
